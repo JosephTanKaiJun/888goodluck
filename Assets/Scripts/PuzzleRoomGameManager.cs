@@ -27,6 +27,7 @@ public class PuzzleRoomGameManager : MonoBehaviour
     void Start()
     {
         GenerateRandomOrder();
+        ResetLights();
         playerOrder = new List<int?>(new int?[slotLightPairs.Length]); // Initialize player order list
     }
 
@@ -92,6 +93,14 @@ public class PuzzleRoomGameManager : MonoBehaviour
         else
         {
             Debug.Log("Incorrect order.");
+        }
+    }
+
+    private void ResetLights()
+    {
+        foreach (var pair in slotLightPairs)
+        {
+            pair.slotLight.color = Color.white;
         }
     }
 
