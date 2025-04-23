@@ -18,4 +18,17 @@ public class SlotTrigger : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("PuzzleItem"))
+        {
+            PuzzleItem puzzleItem = other.GetComponent<PuzzleItem>();
+            if (puzzleItem != null)
+            {
+                PuzzleRoomGameManager.Instance.RegisterItemInSlot(slotIndex, -1); // Reset slot
+                PuzzleRoomGameManager.Instance.CheckAllSlotsFilled();
+            }
+        }
+    }
 }

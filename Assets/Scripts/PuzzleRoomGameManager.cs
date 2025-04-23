@@ -60,8 +60,11 @@ public class PuzzleRoomGameManager : MonoBehaviour
         // Check if all slots are filled
         foreach (var item in playerOrder)
         {
-            if (!item.HasValue)
+            if (!item.HasValue || item.Value == -1)
+            {
+                ResetLights(); // Reset lights if any slot is empty
                 return; // Some slots are still empty
+            }
         }
 
         // All slots are filled, now check order
